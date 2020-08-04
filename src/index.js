@@ -1,19 +1,24 @@
-const form = document.getElementById('create-task-form')
+document.addEventListener("DOMContentLoaded", () => {
 
+  const newTaskForm = document.getElementById('create-task-form');
+  const newTaskDescription = document.getElementById('new-task-description');
+  const newTaskPriority = document.getElementById('new-task-priority');
 
-function submitForm() {
+  const newTaskLists = document.getElementById('tasks');
+
+  newTaskForm = addEventListener('submit', createNewTask);
+});
+
+const createNewTask = event => {
   event.preventDefault();
-  const task = event.target[0].value;
-  const tasks = document.getElementById('tasks')
-  tasks.innerHTML = task;
+  const newTaskDescription = document.getElementById('new-task-description');
+  const newTask = document.createElement("li");
+  newTask.innerText = newTaskDescription.value;
+
+  appendNewTask(newTask);
+  event.target.reset();
+};
+
+const appendNewTask = task => {
   document.getElementById('tasks').appendChild(task);
-
-  
-}
-//////////////////////////////////////// EVENT LISTENERS///////////////////////////////
-form.addEventListener('submit', submitForm)
-
-
-
-// creating an Li Node, and appending it
-/////////////////////////////
+};
